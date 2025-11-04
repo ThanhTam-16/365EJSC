@@ -1,0 +1,52 @@
+// Colors - Soft & Gentle Palette
+$primary-color: #6c9bd1;
+$secondary-color: #a8d5e2;
+$success-color: #86c7a9;
+$warning-color: #f4b860;
+$danger-color: #f08a8a;
+
+// Background Colors
+$bg-gradient-start: #f0f4f8;
+$bg-gradient-end: #e8eef5;
+$card-bg: #ffffff;
+$card-back-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+// Text Colors
+$text-primary: #2c3e50;
+$text-secondary: #7f8c8d;
+$text-light: #ecf0f1;
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+// Border Radius
+$border-radius-sm: 8px;
+$border-radius-md: 12px;
+$border-radius-lg: 16px;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+$shadow-card: 0 3px 12px rgba(0, 0, 0, 0.1);
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+$transition-card-flip: 0.6s;
+
+// Z-index
+$z-header: 100;
+$z-modal: 1000;
+$z-card: 1;
+
+// Breakpoints
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 992px;
+$breakpoint-wide: 1200px;

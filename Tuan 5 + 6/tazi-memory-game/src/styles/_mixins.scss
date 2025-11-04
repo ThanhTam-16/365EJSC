@@ -1,0 +1,72 @@
+@use 'variables' as *;
+
+// Flexbox Center
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Card Flip Animation
+@mixin card-flip-animation {
+  transform-style: preserve-3d;
+  transition: transform $transition-card-flip;
+}
+
+// Responsive Grid
+@mixin responsive-grid($columns, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Button Hover Effect
+@mixin button-hover($scale: 1.05) {
+  transition: transform $transition-fast, box-shadow $transition-fast;
+  
+  &:hover {
+    transform: scale($scale);
+    box-shadow: $shadow-md;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Fade In Animation
+@mixin fade-in($duration: 0.5s) {
+  animation: fadeIn $duration ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Shake Animation
+@mixin shake-animation {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+// Pulse Animation
+@mixin pulse-animation {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}

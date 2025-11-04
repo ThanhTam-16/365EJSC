@@ -1,0 +1,54 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.game-board {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+  @include fade-in(0.5s);
+
+  // Grid configurations for different levels
+  &.grid-cols-4 {
+    @include responsive-grid(4, $spacing-md);
+  }
+
+  &.grid-cols-5 {
+    @include responsive-grid(5, $spacing-sm);
+  }
+
+  &.grid-cols-6 {
+    @include responsive-grid(6, $spacing-sm);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: $breakpoint-tablet) {
+  .game-board {
+    padding: $spacing-md;
+
+    &.grid-cols-4 {
+      @include responsive-grid(4, $spacing-sm);
+    }
+
+    &.grid-cols-5 {
+      @include responsive-grid(4, $spacing-sm);
+    }
+
+    &.grid-cols-6 {
+      @include responsive-grid(4, $spacing-sm);
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .game-board {
+    padding: $spacing-sm;
+
+    &.grid-cols-4,
+    &.grid-cols-5,
+    &.grid-cols-6 {
+      @include responsive-grid(3, $spacing-xs);
+    }
+  }
+}

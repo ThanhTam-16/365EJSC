@@ -18,8 +18,8 @@ class TodoApp {
   }
 
   init() {
-    console.log('🚀 Todo App initialized with Webpack!');
-    console.log('📦 Webpack đã bundle tất cả modules lại!');
+    console.log('Todo App initialized with Webpack!');
+    console.log('Webpack đã bundle tất cả modules lại!');
     
     this.setupEventListeners();
     this.render();
@@ -71,7 +71,7 @@ class TodoApp {
     this.render();
     
     // Show notification
-    showNotification('✅ Đã thêm công việc!');
+    showNotification('Đã thêm công việc!');
   }
 
   toggleComplete(id) {
@@ -81,7 +81,7 @@ class TodoApp {
       saveTodos(this.todos);
       this.render();
       showNotification(
-        todo.completed ? '✓ Đã hoàn thành!' : '↻ Chưa hoàn thành',
+        todo.completed ? 'Đã hoàn thành!' : 'Chưa hoàn thành',
         'success'
       );
     }
@@ -91,7 +91,7 @@ class TodoApp {
     this.todos = this.todos.filter(t => t.id !== id);
     saveTodos(this.todos);
     this.render();
-    showNotification('🗑️ Đã xóa công việc!', 'error');
+    showNotification('Đã xóa công việc!', 'error');
   }
 
   render() {
@@ -101,7 +101,7 @@ class TodoApp {
     if (this.todos.length === 0) {
       todoList.innerHTML = `
         <li class="empty-state">
-          📭 Chưa có công việc nào. Hãy thêm công việc đầu tiên!
+          Chưa có công việc nào. Hãy thêm công việc đầu tiên!
         </li>
       `;
       return;
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.app = new TodoApp();
 
   // Log để kiểm tra Webpack hoạt động
-  console.log('✅ Webpack đã load thành công các modules:');
+  console.log('Webpack đã load thành công các modules:');
   console.log('   - styles.css ✓');
   console.log('   - utils.js ✓');
   console.log('   - icon.svg ✓');
@@ -140,5 +140,5 @@ document.addEventListener('DOMContentLoaded', () => {
 // Tự động reload khi code thay đổi
 if (module.hot) {
   module.hot.accept();
-  console.log('🔥 Hot Module Replacement is enabled!');
+  console.log('Hot Module Replacement is enabled!');
 }

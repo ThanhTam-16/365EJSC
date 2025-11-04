@@ -1,0 +1,156 @@
+@use 'sass:color';
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.win-modal {
+  .modal-content {
+    border: none;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+  }
+
+  .modal-header-custom {
+    background: linear-gradient(135deg, $primary-color, $secondary-color);
+    color: white;
+    border: none;
+    padding: $spacing-lg;
+    @include flex-center;
+    gap: $spacing-sm;
+
+    .trophy-icon {
+      font-size: 2rem;
+      @include pulse-animation;
+    }
+
+    .btn-close {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  .modal-body-custom {
+    padding: $spacing-xl $spacing-lg;
+    text-align: center;
+
+    .stars-container {
+      @include flex-center;
+      gap: $spacing-sm;
+      margin-bottom: $spacing-lg;
+
+      .star {
+        font-size: 2.5rem;
+        color: #ddd;
+        transition: all $transition-normal;
+
+        &.active {
+          color: $warning-color;
+          @include pulse-animation;
+        }
+      }
+    }
+
+    .congrats-text {
+      color: $primary-color;
+      font-weight: 700;
+      margin-bottom: $spacing-lg;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: $spacing-md;
+      margin-top: $spacing-lg;
+    }
+
+    .stat-card {
+      background: $bg-gradient-start;
+      padding: $spacing-md;
+      border-radius: $border-radius-md;
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      box-shadow: $shadow-sm;
+      transition: transform $transition-fast;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      &.highlight {
+        background: linear-gradient(135deg, $success-color, color.adjust($success-color, $lightness: 10%));
+        color: white;
+
+        .stat-icon-wrapper {
+          background: rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-label,
+        .stat-value {
+          color: white;
+        }
+      }
+
+      .stat-icon-wrapper {
+        background: white;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        @include flex-center;
+        flex-shrink: 0;
+
+        .stat-icon {
+          font-size: 1.5rem;
+          color: $primary-color;
+        }
+      }
+
+      .stat-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+
+        .stat-label {
+          font-size: 0.85rem;
+          color: $text-secondary;
+          font-weight: 600;
+        }
+
+        .stat-value {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: $text-primary;
+        }
+      }
+    }
+  }
+
+  .modal-footer-custom {
+    border: none;
+    padding: $spacing-md $spacing-lg $spacing-lg;
+    @include flex-center;
+    gap: $spacing-sm;
+
+    .btn {
+      @include button-hover;
+      font-weight: 600;
+      padding: $spacing-sm $spacing-lg;
+      border-radius: $border-radius-sm;
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: $breakpoint-mobile) {
+  .win-modal {
+    .modal-body-custom {
+      padding: $spacing-lg $spacing-md;
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

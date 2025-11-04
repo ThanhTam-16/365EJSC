@@ -1,0 +1,85 @@
+@use 'sass:color';
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background $transition-slow;
+
+  // Theme variations
+  &.theme-ocean {
+    background: linear-gradient(135deg, #e0f2f7 0%, #b3e5fc 100%);
+  }
+
+  &.theme-forest {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  }
+
+  &.theme-space {
+    background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+  }
+
+  &.theme-galaxy {
+    background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+  }
+
+  .app-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-lg;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .level-selector {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+    @include fade-in;
+
+    h6 {
+      color: $text-secondary;
+      font-weight: 600;
+      margin-bottom: $spacing-sm;
+    }
+
+    .btn-group {
+      box-shadow: $shadow-sm;
+      border-radius: $border-radius-sm;
+      overflow: hidden;
+
+      .btn {
+        @include button-hover(1.02);
+        font-weight: 600;
+        padding: $spacing-sm $spacing-md;
+        border: none;
+
+        &.btn-primary {
+            background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: -10%));
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: $breakpoint-tablet) {
+  .app {
+    .app-container {
+      padding: $spacing-md;
+    }
+
+    .level-selector {
+      .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+
+        .btn {
+          flex: 1 1 45%;
+        }
+      }
+    }
+  }
+}

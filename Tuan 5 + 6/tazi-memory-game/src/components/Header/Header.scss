@@ -1,0 +1,109 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.game-header {
+  box-shadow: $shadow-md;
+  padding: $spacing-sm $spacing-md;
+  z-index: $z-header;
+  background: white !important;
+
+  .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+
+  .header-brand {
+    @include flex-center;
+    gap: $spacing-sm;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: $primary-color;
+    margin: 0;
+
+    .brand-icon {
+      font-size: 2rem;
+      color: $primary-color;
+    }
+
+    .brand-text {
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  .header-stats {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    @include flex-center;
+    gap: $spacing-xs;
+    font-size: 0.95rem;
+
+    &.time-warning {
+      @include pulse-animation;
+    }
+
+    .stat-icon {
+      color: $primary-color;
+      
+      &.level-icon {
+        color: $warning-color;
+      }
+    }
+
+    .stat-label {
+      font-weight: 600;
+      color: $text-secondary;
+    }
+
+    .badge {
+      font-size: 0.9rem;
+      padding: $spacing-xs $spacing-sm;
+    }
+  }
+
+  .restart-btn {
+    @include button-hover(1.03);
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-weight: 600;
+    border-radius: $border-radius-sm;
+  }
+}
+
+// Responsive
+@media (max-width: $breakpoint-tablet) {
+  .game-header {
+    .header-brand {
+      font-size: 1.2rem;
+
+      .brand-icon {
+        font-size: 1.5rem;
+      }
+    }
+
+    .header-stats {
+      width: 100%;
+      justify-content: space-around;
+      gap: $spacing-sm;
+    }
+
+    .stat-item {
+      font-size: 0.85rem;
+
+      .badge {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
