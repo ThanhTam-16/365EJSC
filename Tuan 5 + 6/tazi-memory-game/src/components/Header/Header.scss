@@ -1,18 +1,28 @@
+@use "sass:color";
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
 .game-header {
   box-shadow: $shadow-md;
-  padding: $spacing-sm $spacing-md;
+  padding: $spacing-md;
   z-index: $z-header;
   background: white !important;
+  border-bottom: 3px solid $primary-color;
 
-  .container-fluid {
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: $spacing-sm;
+    gap: $spacing-md;
   }
 
   .header-brand {
@@ -29,10 +39,8 @@
     }
 
     .brand-text {
-      background: linear-gradient(135deg, $primary-color, $secondary-color);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: $text-primary;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
   }
 
@@ -47,9 +55,19 @@
     @include flex-center;
     gap: $spacing-xs;
     font-size: 0.95rem;
+    background: $bg-gradient-start;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    transition: all $transition-fast;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: $shadow-sm;
+    }
 
     &.time-warning {
       @include pulse-animation;
+      background: color.adjust($primary-color, $lightness: 15%);
     }
 
     .stat-icon {
@@ -68,6 +86,27 @@
     .badge {
       font-size: 0.9rem;
       padding: $spacing-xs $spacing-sm;
+      font-weight: 600;
+      
+      &.badge-primary {
+        background-color: $primary-color;
+        color: $text-primary;
+      }
+      
+      &.badge-info {
+        background-color: $info-color;
+        color: $text-primary;
+      }
+      
+      &.badge-success {
+        background-color: $success-color;
+        color: $text-primary;
+      }
+      
+      &.badge-danger {
+        background-color: $danger-color;
+        color: $text-primary;
+      }
     }
   }
 
@@ -78,12 +117,23 @@
     gap: $spacing-xs;
     font-weight: 600;
     border-radius: $border-radius-sm;
+    background-color: color.adjust($primary-color, $lightness: 30%);
+    color: $text-primary;
+    border: none;
+    padding: $spacing-xs $spacing-md;
+
+    &:hover {
+      background-color: color.adjust($text-secondary, $lightness: 20%);
+      color: $text-primary;
+    }
   }
 }
 
 // Responsive
 @media (max-width: $breakpoint-tablet) {
   .game-header {
+    padding: $spacing-sm;
+
     .header-brand {
       font-size: 1.2rem;
 
@@ -92,17 +142,46 @@
       }
     }
 
-    .header-stats {
-      width: 100%;
-      justify-content: space-around;
+    .header-container {
       gap: $spacing-sm;
     }
 
+    .header-stats {
+      width: 100%;
+      justify-content: space-between;
+      gap: $spacing-xs;
+    }
+
     .stat-item {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
+      padding: 4px 8px;
 
       .badge {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        padding: 2px 6px;
+      }
+    }
+
+    .restart-btn {
+      font-size: 0.85rem;
+      padding: 6px 12px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .game-header {
+    .header-stats {
+      gap: 4px;
+    }
+
+    .stat-item {
+      flex: 1;
+      font-size: 0.75rem;
+      padding: 4px 6px;
+
+      .stat-label {
+        display: none;
       }
     }
   }

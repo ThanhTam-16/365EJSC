@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 @use 'variables' as *;
 @use 'mixins' as *;
 
@@ -30,7 +30,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -40,4 +40,36 @@ body {
   &:hover {
     background: color.adjust($primary-color, $lightness: -10%);
   }
+}
+
+// Toastify Custom Styles
+.Toastify__toast {
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-lg;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.Toastify__toast--success {
+  background: $success-color;
+  color: $text-primary;
+}
+
+.Toastify__toast--error {
+  background: $danger-color;
+  color: $text-primary;
+}
+
+.Toastify__toast--info {
+  background: $info-color;
+  color: $text-primary;
+}
+
+.Toastify__toast--warning {
+  background: $warning-color;
+  color: $text-primary;
+}
+
+.Toastify__progress-bar {
+  height: 3px;
 }

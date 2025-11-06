@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classnames from 'classnames';
 import Card from '@components/Card/Card';
 import './GameBoard.scss';
 
-const GameBoard = ({ cards, onCardClick, isDisabled, gridCols }) => {
+const GameBoard = memo(({ cards, onCardClick, isDisabled, gridCols }) => {
   const boardClasses = classnames('game-board', `grid-cols-${gridCols}`);
 
   return (
@@ -18,6 +18,8 @@ const GameBoard = ({ cards, onCardClick, isDisabled, gridCols }) => {
       ))}
     </div>
   );
-};
+});
+
+GameBoard.displayName = 'GameBoard';
 
 export default GameBoard;

@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -8,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].[contenthash].js',
+    assetModuleFilename: 'assets/[hash][ext][query]',
   },
 
   module: {
@@ -39,9 +41,18 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(),
+
+    // ✅ COPY favicon từ public sang dist
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public/logo.png', to: 'logo.png' },
+      ],
+    }),
+
+    // ✅ Bật favicon để HtmlWebpackPlugin nhúng vào HTML
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      favicon: false,
+      favicon: './public/logo.png',
     }),
   ],
 

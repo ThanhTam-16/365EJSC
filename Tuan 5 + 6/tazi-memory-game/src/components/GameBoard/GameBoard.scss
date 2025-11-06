@@ -5,7 +5,10 @@
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: $spacing-lg;
+  padding: $spacing-md;
+  background: white;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-md;
   @include fade-in(0.5s);
 
   // Grid configurations for different levels
@@ -25,7 +28,7 @@
 // Responsive adjustments
 @media (max-width: $breakpoint-tablet) {
   .game-board {
-    padding: $spacing-md;
+    padding: $spacing-sm;
 
     &.grid-cols-4 {
       @include responsive-grid(4, $spacing-sm);
@@ -43,7 +46,8 @@
 
 @media (max-width: $breakpoint-mobile) {
   .game-board {
-    padding: $spacing-sm;
+    padding: $spacing-xs;
+    border-radius: $border-radius-md;
 
     &.grid-cols-4,
     &.grid-cols-5,

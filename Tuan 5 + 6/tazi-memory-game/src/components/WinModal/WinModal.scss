@@ -1,17 +1,18 @@
-@use 'sass:color';
+@use "sass:color";
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
 .win-modal {
   .modal-content {
     border: none;
-    border-radius: $border-radius-lg;
+    border-radius: $border-radius-xl;
     box-shadow: $shadow-lg;
+    overflow: hidden;
   }
 
   .modal-header-custom {
-    background: linear-gradient(135deg, $primary-color, $secondary-color);
-    color: white;
+    background: linear-gradient(135deg, $primary-color 0%, color.adjust($primary-color, $lightness: -10%) 100%);
+    color: $text-primary;
     border: none;
     padding: $spacing-lg;
     @include flex-center;
@@ -20,16 +21,18 @@
     .trophy-icon {
       font-size: 2rem;
       @include pulse-animation;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     }
 
     .btn-close {
-      filter: brightness(0) invert(1);
+      filter: brightness(0) opacity(0.6);
     }
   }
 
   .modal-body-custom {
     padding: $spacing-xl $spacing-lg;
     text-align: center;
+    background: $bg-gradient-start;
 
     .stars-container {
       @include flex-center;
@@ -38,20 +41,23 @@
 
       .star {
         font-size: 2.5rem;
-        color: #ddd;
+        color: #e0e0e0;
         transition: all $transition-normal;
 
         &.active {
           color: $warning-color;
           @include pulse-animation;
+          filter: drop-shadow(0 2px 8px rgba(255, 214, 165, 0.6));
         }
       }
     }
 
     .congrats-text {
-      color: $primary-color;
+      color: $text-primary;
       font-weight: 700;
       margin-bottom: $spacing-lg;
+      font-size: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
 
     .stats-grid {
@@ -62,7 +68,7 @@
     }
 
     .stat-card {
-      background: $bg-gradient-start;
+      background: white;
       padding: $spacing-md;
       border-radius: $border-radius-md;
       display: flex;
@@ -72,25 +78,27 @@
       transition: transform $transition-fast;
 
       &:hover {
-        transform: translateY(-2px);
+        transform: translateY(-3px);
+        box-shadow: $shadow-md;
       }
 
       &.highlight {
-        background: linear-gradient(135deg, $success-color, color.adjust($success-color, $lightness: 10%));
-        color: white;
+        background: linear-gradient(135deg, $success-color, color.adjust($primary-color, $lightness: 10%));
+        border: 2px solid color.adjust($success-color, $lightness: -10%);
 
         .stat-icon-wrapper {
-          background: rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.5);
         }
 
         .stat-label,
         .stat-value {
-          color: white;
+          color: $text-primary;
+          font-weight: 700;
         }
       }
 
       .stat-icon-wrapper {
-        background: white;
+        background: $primary-color;
         border-radius: 50%;
         width: 48px;
         height: 48px;
@@ -99,7 +107,7 @@
 
         .stat-icon {
           font-size: 1.5rem;
-          color: $primary-color;
+          color: white;
         }
       }
 
@@ -129,15 +137,35 @@
     padding: $spacing-md $spacing-lg $spacing-lg;
     @include flex-center;
     gap: $spacing-sm;
+    background: white;
 
     .btn {
       @include button-hover;
       font-weight: 600;
       padding: $spacing-sm $spacing-lg;
-      border-radius: $border-radius-sm;
+      border-radius: $border-radius-md;
       display: flex;
       align-items: center;
       gap: $spacing-xs;
+      border: none;
+
+      &.btn-secondary {
+        background-color: color.adjust($text-secondary, $lightness: 30%);
+        color: $text-primary;
+
+        &:hover {
+          background-color: color.adjust($text-secondary, $lightness: 20%);
+        }
+      }
+
+      &.btn-primary {
+        background-color: $primary-color;
+        color: $text-primary;
+
+        &:hover {
+          background-color: color.adjust($primary-color, $lightness: -5%);
+        }
+      }
     }
   }
 }
@@ -148,8 +176,24 @@
     .modal-body-custom {
       padding: $spacing-lg $spacing-md;
 
+      .congrats-text {
+        font-size: 1.2rem;
+      }
+
+      .stars-container .star {
+        font-size: 2rem;
+      }
+
       .stats-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    .modal-footer-custom {
+      flex-direction: column;
+
+      .btn {
+        width: 100%;
       }
     }
   }

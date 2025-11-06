@@ -1,3 +1,4 @@
+@use "sass:color";
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
@@ -14,8 +15,8 @@
 
   &.is-matched {
     .card-inner {
-      opacity: 0.6;
-      transform: rotateY(180deg) scale(0.95);
+      opacity: 0.5;
+      transform: rotateY(180deg) scale(0.9);
     }
   }
 
@@ -24,9 +25,10 @@
     width: 100%;
     height: 100%;
     @include card-flip-animation;
+    will-change: transform;
     
     &:hover:not(.is-flipped):not(.is-matched) {
-      transform: scale(1.02);
+      transform: scale(1.03) translateY(-2px);
     }
   }
 
@@ -43,15 +45,17 @@
     border-radius: $border-radius-md;
     @include flex-center;
     box-shadow: $shadow-card;
+    transition: box-shadow $transition-fast;
   }
 
   .card-front {
-    background: $card-back-bg;
+    background: linear-gradient(135deg, $primary-color 0%, color.adjust($primary-color, $lightness: -10%) 100%);
     
     .question-icon {
       font-size: 3rem;
       color: $text-light;
-      opacity: 0.9;
+      opacity: 0.95;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     }
   }
 
@@ -59,6 +63,7 @@
     background: $card-bg;
     transform: rotateY(180deg);
     padding: $spacing-xs;
+    border: 3px solid $primary-color;
 
     .card-image {
       width: 100%;
@@ -71,12 +76,31 @@
       font-size: 3rem;
       font-weight: bold;
       color: $primary-color;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+  }
+
+  // Hover effect
+  &:hover .card-front,
+  &:hover .card-back {
+    box-shadow: $shadow-md;
   }
 }
 
 // Responsive adjustments
 @media (max-width: $breakpoint-tablet) {
+  .memory-card {
+    .card-front .question-icon {
+      font-size: 2.5rem;
+    }
+
+    .card-back .card-placeholder {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
   .memory-card {
     .card-front .question-icon {
       font-size: 2rem;

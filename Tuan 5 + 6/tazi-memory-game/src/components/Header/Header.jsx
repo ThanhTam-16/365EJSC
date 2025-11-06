@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Navbar, NavbarBrand, Badge, Button } from 'reactstrap';
 import { FaTrophy, FaClock, FaGamepad, FaRedo } from 'react-icons/fa';
 import { formatTime } from '@utils/gameLogic';
 import './Header.scss';
+import logo from '../../../public/logo.png';
 
-const Header = ({ level, moves, timeElapsed, timeLimit, onRestart }) => {
+const Header = memo(({ level, moves, timeElapsed, timeLimit, onRestart }) => {
   const timeRemaining = timeLimit ? timeLimit - timeElapsed : null;
   const isTimeWarning = timeRemaining && timeRemaining <= 30;
 
   return (
-    <Navbar className="game-header" color="light" light expand="md">
-      <div className="container-fluid">
+    <Navbar className="game-header" light expand="md">
+      <div className="header-container">
         <NavbarBrand className="header-brand">
-          <FaGamepad className="brand-icon" />
+          <img src={logo} alt="Game Logo" className='brand-logo' />
           <span className="brand-text">TaZi Memory Game</span>
         </NavbarBrand>
 
@@ -31,7 +32,6 @@ const Header = ({ level, moves, timeElapsed, timeLimit, onRestart }) => {
           {timeLimit && (
             <div className={`stat-item ${isTimeWarning ? 'time-warning' : ''}`}>
               <FaClock className="stat-icon" />
-              <span className="stat-label">Thời gian:</span>
               <Badge color={isTimeWarning ? 'danger' : 'success'} pill>
                 {formatTime(timeRemaining)}
               </Badge>
@@ -50,6 +50,8 @@ const Header = ({ level, moves, timeElapsed, timeLimit, onRestart }) => {
       </div>
     </Navbar>
   );
-};
+});
+
+Header.displayName = 'Header';
 
 export default Header;

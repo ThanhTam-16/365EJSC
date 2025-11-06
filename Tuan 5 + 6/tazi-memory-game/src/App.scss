@@ -8,17 +8,17 @@
   flex-direction: column;
   transition: background $transition-slow;
 
-  // Theme variations
+  // Pastel Theme 
   &.theme-ocean {
-    background: linear-gradient(135deg, #e0f2f7 0%, #b3e5fc 100%);
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
   }
 
   &.theme-forest {
-    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);
   }
 
   &.theme-space {
-    background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
   }
 
   &.theme-galaxy {
@@ -38,26 +38,46 @@
     text-align: center;
     margin-bottom: $spacing-lg;
     @include fade-in;
+    background: white;
+    padding: $spacing-md;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-sm;
 
     h6 {
       color: $text-secondary;
       font-weight: 600;
-      margin-bottom: $spacing-sm;
+      margin-bottom: $spacing-md;
+      font-size: 1rem;
     }
 
     .btn-group {
       box-shadow: $shadow-sm;
-      border-radius: $border-radius-sm;
+      border-radius: $border-radius-md;
       overflow: hidden;
 
       .btn {
         @include button-hover(1.02);
         font-weight: 600;
-        padding: $spacing-sm $spacing-md;
+        padding: $spacing-sm $spacing-lg;
         border: none;
+        transition: all $transition-normal;
 
         &.btn-primary {
-            background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: -10%));
+          background: $primary-color;
+          color: $text-primary;
+          
+          &:hover {
+            background: color.adjust($primary-color, $lightness: -5%);
+          }
+        }
+
+        &.btn-light {
+          background: white;
+          color: $text-secondary;
+
+          &:hover {
+            background: color.adjust($primary-color, $lightness: 10%);
+          }
         }
       }
     }
@@ -72,13 +92,33 @@
     }
 
     .level-selector {
+      padding: $spacing-sm;
+
+      h6 {
+        font-size: 0.9rem;
+        margin-bottom: $spacing-sm;
+      }
+
       .btn-group {
         display: flex;
         flex-wrap: wrap;
 
         .btn {
           flex: 1 1 45%;
+          font-size: 0.85rem;
+          padding: $spacing-xs $spacing-sm;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .app {
+    .level-selector {
+      .btn-group .btn {
+        flex: 1 1 100%;
+        margin-bottom: 2px;
       }
     }
   }

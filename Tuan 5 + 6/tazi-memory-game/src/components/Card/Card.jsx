@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classnames from 'classnames';
 import { FaQuestion } from 'react-icons/fa';
 import './Card.scss';
 
-const Card = ({ card, onClick, isDisabled }) => {
+const Card = memo(({ card, onClick, isDisabled }) => {
   const cardClasses = classnames('memory-card', {
     'is-flipped': card.isFlipped,
     'is-matched': card.isMatched,
@@ -26,8 +26,9 @@ const Card = ({ card, onClick, isDisabled }) => {
           {card.image ? (
             <img 
               src={require(`@assets/images/cards/${card.image}`)} 
-              alt="Card" 
+              alt="Memory card" 
               className="card-image"
+              loading="lazy"
             />
           ) : (
             <div className="card-placeholder">{card.pairId + 1}</div>
@@ -36,6 +37,8 @@ const Card = ({ card, onClick, isDisabled }) => {
       </div>
     </div>
   );
-};
+});
+
+Card.displayName = 'Card';
 
 export default Card;

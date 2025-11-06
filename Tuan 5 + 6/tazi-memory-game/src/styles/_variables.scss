@@ -1,20 +1,22 @@
-// Colors - Soft & Gentle Palette
-$primary-color: #6c9bd1;
-$secondary-color: #a8d5e2;
-$success-color: #86c7a9;
-$warning-color: #f4b860;
-$danger-color: #f08a8a;
+// Pastel Colors - Soft & Gentle Palette
+$primary-color: #a8dadc;        // Soft cyan
+$secondary-color: #f1faee;      // Cream white
+$success-color: #b8e6b8;        // Mint green
+$warning-color: #ffd6a5;        // Peach
+$danger-color: #ffb3ba;         // Soft pink
+$info-color: #bae1ff;           // Baby blue
 
 // Background Colors
-$bg-gradient-start: #f0f4f8;
-$bg-gradient-end: #e8eef5;
+$bg-gradient-start: #fef9f3;
+$bg-gradient-end: #f5f1ed;
 $card-bg: #ffffff;
-$card-back-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$card-back-bg: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%);
 
 // Text Colors
-$text-primary: #2c3e50;
-$text-secondary: #7f8c8d;
-$text-light: #ecf0f1;
+$text-primary: #264653;
+$text-secondary: #6c757d;
+$text-light: #ffffff;
+$text-muted: #8d99ae;
 
 // Spacing
 $spacing-xs: 0.5rem;
@@ -27,12 +29,13 @@ $spacing-xl: 3rem;
 $border-radius-sm: 8px;
 $border-radius-md: 12px;
 $border-radius-lg: 16px;
+$border-radius-xl: 20px;
 
 // Shadows
-$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
-$shadow-card: 0 3px 12px rgba(0, 0, 0, 0.1);
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.1);
+$shadow-card: 0 3px 10px rgba(0, 0, 0, 0.08);
 
 // Transitions
 $transition-fast: 0.2s ease;
@@ -43,6 +46,7 @@ $transition-card-flip: 0.6s;
 // Z-index
 $z-header: 100;
 $z-modal: 1000;
+$z-toast: 9999;
 $z-card: 1;
 
 // Breakpoints
